@@ -1,0 +1,22 @@
+version: '3'
+services:
+  frontend:
+    build: ./frontend
+    depends_on:
+      - backend
+    ports:
+      - "80:80"
+      - "443:443"
+  backend:
+    build: ./backend
+    depends_on:
+      - db
+      - cache
+  db:
+    build: ./db
+    environment:
+      - POSTGRES_PASSWORD=somepassword
+      - POSTGRES_USER=lpc
+      - POSTGRES_DB=lpc
+  cache:
+    image: redis:latest

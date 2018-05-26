@@ -1,0 +1,9 @@
+version: '3'
+services:
+  frontend:
+    volumes:
+      - ./frontend/dist:/usr/share/nginx/html
+  backend:
+    command: node_modules/.bin/nodemon -L --watch src index.js
+    volumes:
+      - ./backend:/mnt
