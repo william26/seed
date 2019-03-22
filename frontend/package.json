@@ -5,7 +5,8 @@
   "author": "Antoine JACKSON <a.j.william26@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "webpack-dev-server"
+    "dev": "webpack-dev-server",
+    "build": "webpack"
   },
   "dependencies": {
     "apollo-cache-inmemory": "^1.2.1",
