@@ -1,25 +1,26 @@
-const express = require('express')
+const express = require('express');
 
-const app = express()
+const app = express();
 
 const bodyParser = require('body-parser');
 const { graphqlExpress, graphiqlExpress } = require('apollo-server-express');
 const { makeExecutableSchema } = require('graphql-tools');
 
-const typeDefs = require('./schema')
+const dbService = require('./dbService');
+dbService.init();
 
-const dbService = require('./dbService')
-const resolvers = require('./resolvers')
+// const typeDefs = require('./schema');
+// const resolvers = require('./resolvers');
+// const schema = makeExecutableSchema({
+//   typeDefs,
+//   resolvers,
+// });
+// app.use(bodyParser.json(), graphqlExpress({ schema }));
 
-dbService.init()
-
-const schema = makeExecutableSchema({
-  typeDefs,
-  resolvers,
+app.get('/', (req, res) => {
+  res.send('HELLO WORLD');
 });
 
-app.use(bodyParser.json(), graphqlExpress({ schema }));
-
 app.listen(80, () => {
-  console.log('back-end listening on 80')
-})
+  console.log('back-end listening on 80');
+});

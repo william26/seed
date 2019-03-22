@@ -4,4 +4,4 @@ type Query {
 
 type Mutation {
 }
-`
+`;
